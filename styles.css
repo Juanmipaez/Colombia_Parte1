@@ -1,0 +1,50 @@
+/* styles.css */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Poppins', sans-serif; line-height: 1.6; overflow-x: hidden; }
+
+/* Navegación */
+nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.9); backdrop-filter: blur(5px); z-index: 100; }
+nav ul { display: flex; justify-content: center; gap: 2rem; padding: 1rem; }
+nav a { text-decoration: none; color: #333; font-weight: 600; transition: color 0.3s; }
+nav a:hover { color: #007BFF; }
+
+/* Línea del tiempo */
+.timeline-container { position: relative; padding-top: 60px; }
+.timeline-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 100%;
+  background: rgba(0,0,0,0.1);
+}
+.parallax-section { position: relative; min-height: 100vh; background-attachment: fixed; background-position: center; background-size: cover; display: flex; align-items: center; justify-content: center; }
+.marker {
+  position: absolute;
+  left: 50%; top: 50%; transform: translate(-50%, -50%) scale(0);
+  width: 16px; height: 16px; background: #fff; border: 4px solid #333; border-radius: 50%; transition: transform 0.4s ease;
+}
+.parallax-section.in-view .marker { transform: translate(-50%, -50%) scale(1); }
+.parallax-section .content { background: rgba(255, 255, 255, 0.85); padding: 2rem; border-radius: 8px; max-width: 600px; text-align: center; opacity: 0; transform: translateY(50px); transition: all 0.8s ease-out; }
+.parallax-section.in-view .content { opacity: 1; transform: translateY(0); }
+#paleo { background-image: url('images/paleo.jpg'); }
+#prehispanico { background-image: url('images/prehispanico.jpeg'); }
+#colonial { background-image: url('images/colonial.jpg'); }
+#posindependencia { background-image: url('images/posindependencia.jpg'); }
+
+/* Botón de más info */
+.btn-info { margin-top: 1rem; padding: 0.5rem 1rem; border: none; border-radius: 4px; background: #333; color: #fff; cursor: pointer; transition: transform 0.2s, background 0.3s; }
+.btn-info:hover { transform: scale(1.05); background: #007BFF; }
+
+/* Modal */
+.modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: none; align-items: center; justify-content: center; padding: 1rem; }
+.modal-content { background: #fff; padding: 2rem; border-radius: 8px; max-width: 600px; text-align: left; position: relative; box-shadow: 0 8px 16px rgba(0,0,0,0.2); animation: fadeIn 0.3s ease-out; }
+.modal-content h3 { margin-bottom: 1rem; }
+.modal-content ul { list-style: disc inside; margin-bottom: 1rem; }
+.modal-content blockquote { margin: 1rem 0; padding-left: 1rem; border-left: 4px solid #ccc; font-style: italic; }
+.close { position: absolute; top: 0.5rem; right: 1rem; font-size: 1.5rem; cursor: pointer; transition: color 0.2s; }
+.close:hover { color: #007BFF; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); }}
